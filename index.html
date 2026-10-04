@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="TaskFlow - Organize suas tarefas de forma simples, leve e acolhedora."
+    >
+
+    <title>TaskFlow — Minha Lista de Tarefas</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho">
+
+            <div class="logo-area">
+
+                <div class="logo">
+                    ✓
+                </div>
+
+                <div>
+                    <h1>TaskFlow</h1>
+
+                    <p>
+                        Organize seu dia com leveza e tranquilidade.
+                    </p>
+                </div>
+
+            </div>
+
+            <button
+                id="btnTema"
+                class="btn-tema"
+                aria-label="Alterar tema"
+                title="Alterar tema"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+        <!-- ESTATÍSTICAS -->
+        <section class="estatisticas">
+
+            <div class="card-estatistica">
+
+                <div class="icone-stat total">
+                    📋
+                </div>
+
+                <div>
+                    <span>Total</span>
+                    <strong id="totalTarefas">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="card-estatistica">
+
+                <div class="icone-stat pendente">
+                    ⏳
+                </div>
+
+                <div>
+                    <span>Pendentes</span>
+                    <strong id="tarefasPendentes">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="card-estatistica">
+
+                <div class="icone-stat concluida">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Concluídas</span>
+                    <strong id="tarefasConcluidas">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="card-estatistica">
+
+                <div class="icone-stat progresso">
+                    🌱
+                </div>
+
+                <div>
+                    <span>Progresso</span>
+                    <strong id="porcentagemProgresso">0%</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAINEL PRINCIPAL -->
+        <section class="painel">
+
+            <div class="titulo-lista">
+
+                <div>
+                    <h2>Minhas tarefas</h2>
+
+                    <p>
+                        Um passo de cada vez. Você consegue! 💚
+                    </p>
+                </div>
+
+                <button
+                    id="btnNovaTarefa"
+                    class="btn-principal"
+                >
+                    + Nova tarefa
+                </button>
+
+            </div>
+
+
+            <!-- PESQUISA -->
+            <div class="barra-pesquisa">
+
+                <span class="icone-pesquisa">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="inputPesquisa"
+                    placeholder="Pesquisar tarefa..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- FILTROS -->
+            <div class="filtros">
+
+                <button
+                    class="filtro ativo"
+                    data-filtro="todas"
+                >
+                    Todas
+                </button>
+
+                <button
+                    class="filtro"
+                    data-filtro="pendentes"
+                >
+                    Pendentes
+                </button>
+
+                <button
+                    class="filtro"
+                    data-filtro="concluidas"
+                >
+                    Concluídas
+                </button>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+            <div
+                id="formularioTarefa"
+                class="formulario escondido"
+            >
+
+                <div class="form-header">
+
+                    <div>
+                        <h3>
+                            Nova tarefa ✨
+                        </h3>
+
+                        <p>
+                            Organize mais uma coisa do seu dia.
+                        </p>
+                    </div>
+
+                    <button
+                        id="btnFecharFormulario"
+                        class="btn-fechar"
+                        aria-label="Fechar"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="inputTarefa">
+                        O que você precisa fazer?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="inputTarefa"
+                        placeholder="Ex: Estudar JavaScript"
+                        maxlength="150"
+                    >
+
+                </div>
+
+
+                <div class="form-linha">
+
+                    <div class="campo">
+
+                        <label for="selectPrioridade">
+                            Prioridade
+                        </label>
+
+                        <select id="selectPrioridade">
+
+                            <option value="baixa">
+                                🟢 Baixa
+                            </option>
+
+                            <option
+                                value="media"
+                                selected
+                            >
+                                🟡 Média
+                            </option>
+
+                            <option value="alta">
+                                🔴 Alta
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="selectCategoria">
+                            Categoria
+                        </label>
+
+                        <select id="selectCategoria">
+
+                            <option value="Pessoal">
+                                👤 Pessoal
+                            </option>
+
+                            <option value="Trabalho">
+                                💼 Trabalho
+                            </option>
+
+                            <option value="Estudos">
+                                📚 Estudos
+                            </option>
+
+                            <option value="Compras">
+                                🛒 Compras
+                            </option>
+
+                            <option value="Outros">
+                                📌 Outros
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="inputData">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="inputData"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-acoes">
+
+                    <button
+                        id="btnCancelar"
+                        class="btn-secundario"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        id="btnAdicionar"
+                        class="btn-principal"
+                    >
+                        Adicionar tarefa
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LISTA -->
+            <ul
+                id="listaTarefas"
+                class="lista-tarefas"
+            ></ul>
+
+
+            <!-- ESTADO VAZIO -->
+            <div
+                id="mensagemVazia"
+                class="estado-vazio"
+            >
+
+                <div class="estado-icone">
+                    🌱
+                </div>
+
+                <h3>
+                    Tudo tranquilo por aqui
+                </h3>
+
+                <p>
+                    Adicione uma tarefa e comece seu dia.
+                </p>
+
+                <button
+                    id="btnAdicionarVazio"
+                    class="btn-principal"
+                >
+                    + Criar primeira tarefa
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer>
+
+            <p>
+                TaskFlow • Organize melhor, viva mais leve. 💚
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- NOTIFICAÇÃO -->
+    <div
+        id="notificacao"
+        class="notificacao"
+    >
+
+        <span id="iconeNotificacao">
+            ✓
+        </span>
+
+        <span id="textoNotificacao">
+            Tarefa adicionada!
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
