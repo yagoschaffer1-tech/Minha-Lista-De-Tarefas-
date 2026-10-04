@@ -1,0 +1,380 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f2f4f7;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 40px 20px;
+}
+
+
+/* CONTAINER PRINCIPAL */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 600px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+/* CABEÇALHO */
+
+header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #222;
+
+    margin-bottom: 10px;
+
+    font-size: 32px;
+}
+
+header p {
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* FORMULÁRIO */
+
+.form-tarefa {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.form-tarefa input {
+    flex: 1;
+
+    padding: 16px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.form-tarefa input:focus {
+    border-color: #4CAF50;
+}
+
+.form-tarefa button {
+    padding: 16px 25px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #4CAF50;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.form-tarefa button:hover {
+    background: #3e9142;
+
+    transform: translateY(-1px);
+}
+
+
+/* INFORMAÇÕES */
+
+.informacoes {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: #f7f7f7;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    color: #555;
+}
+
+.informacoes strong {
+    color: #222;
+}
+
+
+/* LISTA */
+
+#listaTarefas {
+    list-style: none;
+
+    width: 100%;
+}
+
+
+/* TAREFA PENDENTE */
+
+.tarefa {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    width: 100%;
+
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    border-radius: 10px;
+
+    /*
+    AMARELO = TAREFA PENDENTE
+    */
+
+    background: #fff3a3;
+
+    border: 2px solid #f0d84a;
+
+    transition: 0.2s;
+}
+
+.tarefa:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* CHECKBOX */
+
+.tarefa input[type="checkbox"] {
+    width: 22px;
+
+    height: 22px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+/* TEXTO DA TAREFA */
+
+.texto-tarefa {
+    flex: 1;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    word-break: break-word;
+}
+
+
+/* ================================= */
+/* TAREFA CONCLUÍDA */
+/* ================================= */
+
+.tarefa.concluida {
+
+    /*
+    VERDE = CONCLUÍDA
+    */
+
+    background: #b9f6c3;
+
+    border-color: #4caf50;
+}
+
+
+/* TEXTO TACHADO */
+
+.tarefa.concluida .texto-tarefa {
+
+    text-decoration: line-through;
+
+    color: #237333;
+
+    font-weight: 600;
+}
+
+
+/* BOTÕES */
+
+.acoes {
+    display: flex;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+
+/* BOTÃO EDITAR */
+
+.btn-editar {
+    border: none;
+
+    padding: 9px 13px;
+
+    border-radius: 7px;
+
+    background: #2196F3;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-editar:hover {
+    background: #1976D2;
+}
+
+
+/* BOTÃO EXCLUIR */
+
+.btn-excluir {
+    border: none;
+
+    padding: 9px 13px;
+
+    border-radius: 7px;
+
+    background: #f44336;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-excluir:hover {
+    background: #d32f2f;
+}
+
+
+/* MENSAGEM QUANDO NÃO EXISTEM TAREFAS */
+
+.mensagem-vazia {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #999;
+
+    font-size: 17px;
+
+    display: block;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 25px 20px;
+
+        min-height: 500px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+
+    .form-tarefa {
+        flex-direction: column;
+    }
+
+    .form-tarefa button {
+        width: 100%;
+    }
+
+
+    .informacoes {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .tarefa {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .texto-tarefa {
+        min-width: 0;
+    }
+
+
+    .acoes {
+        width: 100%;
+
+        margin-left: 37px;
+    }
+
+
+    .btn-editar,
+    .btn-excluir {
+        flex: 1;
+    }
+
+}
+```
